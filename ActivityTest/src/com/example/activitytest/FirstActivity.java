@@ -15,10 +15,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-public class FirstActivity extends Activity {
+public class FirstActivity extends BaseActivity {
 
 	protected void onCreate (Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		Log.d("FirstActivity", "Task id is"+getTaskId());
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.first_layout);
 		Button button1= (Button) findViewById(R.id.button_1);
@@ -37,8 +38,10 @@ public class FirstActivity extends Activity {
 			//	Intent intent=new Intent(FirstActivity.this,SecondActivity.class);
 			//	intent.putExtra("extra_data", data);
 				//startActivity(intent);
+				//Intent intent=new Intent(FirstActivity.this,SecondActivity.class);
+				//startActivityForResult(intent,1);
 				Intent intent=new Intent(FirstActivity.this,SecondActivity.class);
-				startActivityForResult(intent,1);
+				startActivity(intent);
 			
 			}
 		});
@@ -71,5 +74,8 @@ public class FirstActivity extends Activity {
 			default:
 		}
 	}
-
+	protected void onRestart(){
+		super.onRestart();
+		Log.d("FirstActivity", "onRestart");
+	}
 }
