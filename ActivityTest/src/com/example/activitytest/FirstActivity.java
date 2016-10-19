@@ -6,6 +6,7 @@ import android.content.Intent;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.widget.Button;
 import android.view.Menu;
@@ -28,9 +29,17 @@ public class FirstActivity extends Activity {
 		   // Intent intent=new Intent(FirstActivity.this,SecondActivity.class);
 				//Intent intent=new Intent("com.example.activitytest.ACTION_START");
 				//intent.addCategory("com.example.activitytest.MY_CATEGORY");
-				Intent intent=new Intent(Intent.ACTION_VIEW);
-				intent.setData(Uri.parse("http://www.baidu.com"));
-			startActivity(intent);
+			//	Intent intent=new Intent(Intent.ACTION_VIEW);
+				//intent.setData(Uri.parse("http://www.baidu.com"));
+			//	Intent intent=new Intent(Intent.ACTION_DIAL);
+				//intent.setData(Uri.parse("tel:10086"));
+			//	String data="Hello SecondActivity";
+			//	Intent intent=new Intent(FirstActivity.this,SecondActivity.class);
+			//	intent.putExtra("extra_data", data);
+				//startActivity(intent);
+				Intent intent=new Intent(FirstActivity.this,SecondActivity.class);
+				startActivityForResult(intent,1);
+			
 			}
 		});
 		
@@ -50,6 +59,17 @@ public class FirstActivity extends Activity {
 			default:
 		}
 		return true;
+	}
+	protected void onActivityResult(int requestCode,int resultCode,Intent data){
+		switch(requestCode){
+		case 1:
+			if (resultCode==RESULT_OK){
+				String returnedData=data.getStringExtra("data_return");
+				Log.d("FirstActivity", returnedData);
+			}
+			break;
+			default:
+		}
 	}
 
 }
