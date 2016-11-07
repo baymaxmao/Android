@@ -1,6 +1,5 @@
 package com.example.broadcastbestpractice;
 
-import android.app.Activity;
 import android.content.Intent;
 
 import android.view.View.OnClickListener;
@@ -11,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
